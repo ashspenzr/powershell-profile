@@ -624,8 +624,10 @@ Use '$($PSStyle.Foreground.Magenta)Show-Help$($PSStyle.Reset)' to display this h
 }
 
 # ─── load personal overrides ───────────────────────────────────────
-if (Test-Path "D:\Documents\PowerShell\customProfile.ps1") {
-    Invoke-Expression -Command "& `"D:\Documents\PowerShell\customProfile.ps1`""
+$CustomProfile = 'D:\Documents\PowerShell\customProfile.ps1'
+
+if (Test-Path $CustomProfile) {
+    .  $CustomProfile          # ← the single dot is the key!
 }
 
 Write-Host "$($PSStyle.Foreground.Yellow)Use 'Show-Help' to display help$($PSStyle.Reset)"
